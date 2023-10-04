@@ -9,14 +9,26 @@
         "strict": true,
         "forceConsistentCasingInFileNames": true,
         "noFallthroughCasesInSwitch": true,
-        "module": "esnext",
+        // "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "noEmit": true,
-        "jsx": "react-jsx"
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "jsx": "react",
+        "typeRoots": ["./node_modules/@types"]
     },
-    "include": ["src", "next-env.d.ts", "/*.ts", "/*.tsx"],
+    "include": [
+        "src",
+        "next-env.d.ts",
+        "/*.ts",
+        "/*.tsx",
+        "./db/**/*",
+        "./src/**/*"
+    ],
     "typeRoots": ["./src/type.d.ts", "./node_modules/@types/"],
     "noImplicitAny": false
 }

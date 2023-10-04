@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
-import myContractAbi from "./contract-abi.json";
-import Web3, { validator } from "web3";
+import { ContractABI } from "./contractAbi";
+import Web3 from "web3";
+import fs from "fs";
+import StakingContractAbi from "./contract-abi.json";
 
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
@@ -30,9 +32,10 @@ function StakingController() {
         setDefaultAccount(address);
         const balance = await newAccount.getBalance();
         const convertBalance = web3.utils.fromWei(balance, "ether");
+
         setUserBalance(convertBalance);
         await getuserBalance(address);
-        console.log(getTimeFromContract);
+        console.log(getFromContract);
     };
     const getuserBalance = async (address: any) => {
         const balance = await provider.getBalance(address, "latest");
@@ -42,10 +45,30 @@ function StakingController() {
     const contractAddress = "0xaB7a043B7BEEc9A00EB649CdC93310aDB2c22E52";
 
     // Create an instance of the contract
-    const contract = new web3.eth.Contract(myContractAbi, contractAddress);
+    // const abi = JSON.parse(fs.readFileSync("contract-abi.json", "utf-8"))
+    //     .abi as unknown as ContractABI;
 
-    async function getTimeFromContract() {
-        const stack = await contract.methods.stake().call({});
+    // console.log("abi: ", abi, typeof abi);
+    const contract = new web3.eth.Contract(StakingContractAbi, contractAddress);
+    console.log(contract);
+
+    async function getCurrentAccount() {
+        const accounts = await web3.eth.getAccounts();
+        return accounts[0];
+    }
+
+    async function getInputNumber() {
+        const amountWei = web3.utils.toWei(number, "ether");
+        return amountWei;
+    }
+
+    async function getFromContract() {
+        const account = await getCurrentAccount();
+        const amount = await getInputNumber();
+
+        const stack = await contract.methods["stake"](
+            "0x90386996f314342Fb8CdC2bd672F751Da4184a1e"
+        ).send({ from: amount });
         console.log(stack);
     }
 
@@ -104,7 +127,7 @@ function StakingController() {
 
                                 <button
                                     className="button-connect"
-                                    onClick={getTimeFromContract}
+                                    onClick={getFromContract}
                                 ></button>
                             </div>
                         </div>
