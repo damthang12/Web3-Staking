@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { ethers } from "ethers";
-import { ContractABI } from "./contractAbi";
 import Web3 from "web3";
-import fs from "fs";
-import StakingContractAbi from "./contract-abi.json";
+import stakingContractAbi from './contractAbi'
 
 const web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
 
@@ -34,10 +32,10 @@ function StakingController() {
         const convertBalance = web3.utils.fromWei(balance, "ether");
 
         setUserBalance(convertBalance);
-        await getuserBalance(address);
+        await getUserBalance(address);
         console.log(getFromContract);
     };
-    const getuserBalance = async (address: any) => {
+    const getUserBalance = async (address: any) => {
         const balance = await provider.getBalance(address, "latest");
     };
 
@@ -45,11 +43,7 @@ function StakingController() {
     const contractAddress = "0xaB7a043B7BEEc9A00EB649CdC93310aDB2c22E52";
 
     // Create an instance of the contract
-    // const abi = JSON.parse(fs.readFileSync("contract-abi.json", "utf-8"))
-    //     .abi as unknown as ContractABI;
-
-    // console.log("abi: ", abi, typeof abi);
-    const contract = new web3.eth.Contract(StakingContractAbi, contractAddress);
+    const contract = new web3.eth.Contract(stakingContractAbi, contractAddress);
     console.log(contract);
 
     async function getCurrentAccount() {

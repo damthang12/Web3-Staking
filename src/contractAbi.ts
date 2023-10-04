@@ -1,135 +1,137 @@
-export type ContractABI = [
+const stakingContractAbi = [
     {
-        inputs: [];
-        name: "exit";
-        outputs: [];
-        stateMutability: "nonpayable";
-        type: "function";
+        "inputs": [],
+        "name": "exit",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
-        anonymous: false;
-        inputs: [
+        "anonymous": false,
+        "inputs": [
             {
-                indexed: false;
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             }
-        ];
-        name: "Exited";
-        type: "event";
+        ],
+        "name": "Exited",
+        "type": "event"
     },
     {
-        inputs: [
+        "inputs": [
             {
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             }
-        ];
-        name: "stake";
-        outputs: [];
-        stateMutability: "payable";
-        type: "function";
+        ],
+        "name": "stake",
+        "outputs": [],
+        "stateMutability": "payable",
+        "type": "function"
     },
     {
-        anonymous: false;
-        inputs: [
+        "anonymous": false,
+        "inputs": [
             {
-                indexed: false;
-                internalType: "address";
-                name: "del";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "del",
+                "type": "address"
             },
             {
-                indexed: false;
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             },
             {
-                indexed: false;
-                internalType: "uint256";
-                name: "amount";
-                type: "uint256";
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
             }
-        ];
-        name: "Staked";
-        type: "event";
+        ],
+        "name": "Staked",
+        "type": "event"
     },
     {
-        inputs: [
+        "inputs": [
             {
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             },
             {
-                internalType: "uint256";
-                name: "amount";
-                type: "uint256";
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
             }
-        ];
-        name: "unstake";
-        outputs: [];
-        stateMutability: "nonpayable";
-        type: "function";
+        ],
+        "name": "unstake",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
-        anonymous: false;
-        inputs: [
+        "anonymous": false,
+        "inputs": [
             {
-                indexed: false;
-                internalType: "address";
-                name: "del";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "del",
+                "type": "address"
             },
             {
-                indexed: false;
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             },
             {
-                indexed: false;
-                internalType: "uint256";
-                name: "amount";
-                type: "uint256";
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "amount",
+                "type": "uint256"
             }
-        ];
-        name: "Unstaked";
-        type: "event";
+        ],
+        "name": "Unstaked",
+        "type": "event"
     },
     {
-        inputs: [
+        "inputs": [
             {
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             }
-        ];
-        name: "withdrawlReward";
-        outputs: [];
-        stateMutability: "nonpayable";
-        type: "function";
+        ],
+        "name": "withdrawlReward",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
     },
     {
-        anonymous: false;
-        inputs: [
+        "anonymous": false,
+        "inputs": [
             {
-                indexed: false;
-                internalType: "address";
-                name: "del";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "del",
+                "type": "address"
             },
             {
-                indexed: false;
-                internalType: "address";
-                name: "val";
-                type: "address";
+                "indexed": false,
+                "internalType": "address",
+                "name": "val",
+                "type": "address"
             }
-        ];
-        name: "WithdrawlReward";
-        type: "event";
+        ],
+        "name": "WithdrawlReward",
+        "type": "event"
     }
-];
+] as const
+
+export default stakingContractAbi
